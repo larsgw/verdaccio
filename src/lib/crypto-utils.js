@@ -1,12 +1,21 @@
 // @flow
 
-import {createDecipher, createCipher, createHash, pseudoRandomBytes} from 'crypto';
+import {
+  createDecipher,
+  createCipher,
+  createHash,
+  pseudoRandomBytes,
+} from 'crypto';
 import jwt from 'jsonwebtoken';
-import type {JWTPayload, JWTSignOptions} from '../../types';
+
+import type {JWTSignOptions, RemoteUser} from '@verdaccio/types';
 
 export const defaultAlgorithm = 'aes192';
+export const defaultTarballHashAlgorithm = 'sha1';
 
 export function aesEncrypt(buf: Buffer, secret: string): Buffer {
+  // deprecated
+  // https://nodejs.org/api/crypto.html#crypto_crypto_createcipher_algorithm_password_options
   const c = createCipher(defaultAlgorithm, secret);
   const b1 = c.update(buf);
   const b2 = c.final();
@@ -16,6 +25,8 @@ export function aesEncrypt(buf: Buffer, secret: string): Buffer {
 
 export function aesDecrypt(buf: Buffer, secret: string) {
   try {
+    // deprecated
+    // https://nodejs.org/api/crypto.html#crypto_crypto_createdecipher_algorithm_password_options
     const c = createDecipher(defaultAlgorithm, secret);
     const b1 = c.update(buf);
     const b2 = c.final();
@@ -26,7 +37,7 @@ export function aesDecrypt(buf: Buffer, secret: string) {
 }
 
 export function createTarballHash() {
-  return createHash('sha1');
+  return createHash(defaultTarballHashAlgorithm);
 }
 
 /**
@@ -51,6 +62,6 @@ export function signPayload(payload: JWTPayload, secret: string, options: JWTSig
   });
 }
 
-export function verifyPayload(token: string, secret: string) {
-  return jwt.verify(token, secret);
+export function verifyPayload(token: string, secretOrPrivateKey: string) {
+  return jwt.verify(token, secretOrPrivateKey);
 }
