@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verdaccio update notification should print major update notification 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "
+        [37m[1mA new MAJOR version of Verdaccio is available on NPM. [1m[31m3.0.0[37m[1m → [1m[32m4.5.6[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v4.5.6[22m[39m
+    ",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Verdaccio update notification should print minor update notification 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "
+        [37m[1mA new MINOR version of Verdaccio is available on NPM. [1m[31m4.0.0[37m[1m → [1m[32m4.5.6[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v4.5.6[22m[39m
+    ",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Verdaccio update notification should print path update notification 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "
+        [37m[1mA new PATCH version of Verdaccio is available on NPM. [1m[31m4.5.0[37m[1m → [1m[32m4.5.6[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v4.5.6[22m[39m
+    ",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`create banner should create a banner 1`] = `
+"
+        [37m[1mA new MAJOR version of Verdaccio is available on NPM. [1m[31m1.0.0[37m[1m → [1m[32m2.0.0[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v2.0.0[22m[39m
+    "
+`;
+
+exports[`create banner should create a banner 2`] = `
+"
+        [37m[1mA new MINOR version of Verdaccio is available on NPM. [1m[31m1.0.0[37m[1m → [1m[32m1.1.0[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v1.1.0[22m[39m
+    "
+`;
+
+exports[`create banner should create a banner 3`] = `
+"
+        [37m[1mA new PATCH version of Verdaccio is available on NPM. [1m[31m1.0.0[37m[1m → [1m[32m1.0.1[37m[1m [22m[39m
+        Run [32m[1mnpm install -g verdaccio[22m[39m to update.
+        [34m[1mChangelog: https://github.com/verdaccio/verdaccio/releases/tag/v1.0.1[22m[39m
+    "
+`;
